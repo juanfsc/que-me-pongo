@@ -1,49 +1,12 @@
-# java-base-project
+DDS - Que me pongo iteración I
 
-Esta es una plantilla de proyecto diseñada para: 
+## Diagrama de Clases
+![Diagrama de Clases](http://www.plantuml.com/plantuml/png/XL9FQ-f043zdFiNWIHycyAuFNp1D8rYiaQYNNiesBY8asR2xmPRYT--O7LDZXLwoEpk_-VqPCZLMQDkK1UI5C0OZsyXgfpx1MnoCdQmqLIB4kZqDUBdGUw7Tyz2zZk04icfAV1PMweCeN9Sedf9eEKO4BzucMGedp-5YmkqL8JlWAiesoUjwkqgoUPgvaMZn4ZscvpktvylPTpkAusITKhacMlRUqMqEjN85Mhg2rtU69PSSCbQ5qY7cvqDIHl0Ub2fGxBMah6rts7unfwminXfEy2OHvfUQuEBDM2roo_PcT5NwuvxBNCjkjQsPSUTqzC-z4zybhAYiA5J5V2ZVBG7CRohu7ojvl78_x2_t71201tm_l4B2pHOdVbFxhDTDxDInegd1to3uCy1sQz1HECQRPK7FCVOb-xqW2F5-ewcfvTH-s0om3qOUPfESWtzycDAtAOil)
+## Consideraciones
+Las prendas no pueden tener atributos vacíos, el proceso de creación de una prenda se puede complicar debido a la cantidad de atributos, para mantener consistencia podemos emplear algún patrón creacional que abstraiga la creación de estos objetos y nos los entregue listos para usar.
 
-* Java 8. :warning: Si bien el proyecto no lo limita explícitamente, el comando `mvn verify` no funcionará con versiones mas modernas de Java. 
-* JUnit 5. :warning: La versión 5 de JUnit es la más nueva del framework y presenta algunas diferencias respecto a la versión "clásica" (JUnit 4). Para mayores detalles, ver: 
-  *  [Apunte de herramientas](https://docs.google.com/document/d/1VYBey56M0UU6C0689hAClAvF9ILE6E7nKIuOqrRJnWQ/edit#heading=h.dnwhvummp994)
-  *  [Entrada de Blog (en inglés)](https://www.baeldung.com/junit-5-migration) 
-  *  [Entrada de Blog (en español)](https://www.paradigmadigital.com/dev/nos-espera-junit-5/)
-* Maven 3.3 o superior
+El uso del patrón debe permitir que la configuracion de la prenda tenga sentido, no debe existir una prenda "Remera" de tipo "Calzado"
 
-# Ejecutar tests
+Decido utilizar el patrón *Factory Method*, que me permite separar la creación de una prenda del los objetos que usen a las prendas, teniendo una clase que extienda a *PrendaFactory* para obtener una prenda y mantener una coherencia con el tipo y categoría de prenda, ejemplo *PantaloFactory* tiene categoría *ParteSuperior* y tipo Pantalón.
 
-```
-mvn test
-```
-
-# Validar el proyecto de forma exahustiva
-
-```
-mvn clean verify
-```
-
-Este comando hará lo siguiente:
-
- 1. Ejecutará los tests
- 2. Validará las convenciones de formato mediante checkstyle
- 3. Detectará la presencia de (ciertos) code smells
- 4. Validará la cobertura del proyecto
-
-# Entrega del proyecto
-
-Para entregar el proyecto, crear un tag llamado `entrega-final`. Es importante que antes de realizarlo se corra la validación
-explicada en el punto anterior. Se recomienda hacerlo de la siguiente forma:
-
-```
-mvn clean verify && git tag entrega-final && git push origin HEAD --tags
-```
-
-# Configuración del IDE (IntelliJ)
-
- 1. Tabular con dos espacios: ![Screenshot_2021-04-09_18-23-26](https://user-images.githubusercontent.com/677436/114242543-73e1fe00-9961-11eb-9a61-7e34be9fb8de.png)
- 2. Instalar y configurar Checkstyle:
-    1. Instalar el plugin https://plugins.jetbrains.com/plugin/1065-checkstyle-idea:
-    2. Configurarlo activando los Checks de Google y la versión de Checkstyle `== 8.35`: ![Screenshot_2021-04-09_18-16-13](https://user-images.githubusercontent.com/677436/114242548-75132b00-9961-11eb-972e-28e6e1412979.png)
- 3. Usar fin de linea unix
-    1. En **Settings/Preferences**, ir a a **Editor | Code Style**.
-    2. En la lista **Line separator**, seleccionar `Unix and OS X (\n)`.
- ![Screenshot 2021-04-10 03-49-00](https://user-images.githubusercontent.com/11875266/114260872-c6490c00-99ad-11eb-838f-022acc1903f4.png)
+¿Qué es una prenda válida para un atuendo? Aquella que se obtiene mediante un *factory*, o una prenda cuyo tipo no exista aún en el atuendo(no quisiera tener dos prendas inferiores en el atuendo?, pero si podría tener más de un accesorio?).
