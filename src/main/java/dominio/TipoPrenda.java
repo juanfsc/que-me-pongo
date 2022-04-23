@@ -1,11 +1,18 @@
 package dominio;
 
-public class TipoPrenda {
-  CategoriaPrenda categoria;
-  public TipoPrenda(CategoriaPrenda categoria){
+public enum TipoPrenda {
+  ZAPATO(CategoriaPrenda.CALZADO),
+  CAMISA_MANGA_CORTA(CategoriaPrenda.PARTE_SUPERIOR),
+  PANTALON(CategoriaPrenda.PARTE_INFERIOR),
+  PULSERA(CategoriaPrenda.ACCESORIOS);
+
+  private CategoriaPrenda categoria;
+
+  TipoPrenda(CategoriaPrenda categoria) {
     this.categoria = categoria;
   }
-  public CategoriaPrenda getCategoria() {
-    return categoria;
+
+  public CategoriaPrenda getCategoria(){
+    return this.categoria;
   }
 }

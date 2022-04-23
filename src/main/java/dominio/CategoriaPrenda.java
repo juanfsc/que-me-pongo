@@ -1,7 +1,7 @@
 package dominio;
 
 public enum CategoriaPrenda {
-  PARTE_sUPERIOR,
+  PARTE_SUPERIOR,
   CALZADO,
   PARTE_INFERIOR,
   ACCESORIOS

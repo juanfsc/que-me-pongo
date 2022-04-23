@@ -1,25 +1,21 @@
 package dominio;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Prenda {
   private TipoPrenda tipo;
   private MaterialPrenda material;
-  private List<Color> colores = new ArrayList<>();
-  private Integer cantidadColores = 2;
+  private Color colorPrimario;
+  private Color colorSecundario;
 
-  public Prenda(TipoPrenda tipo, MaterialPrenda material){
+  public Prenda(TipoPrenda tipo, MaterialPrenda material, Color colorPrimario, Color colorSecundario){
+    if(tipo==null) { throw new PrendaInvalidaException("No se puede crear prenda sin tipo");}
     this.tipo = tipo;
+    if(material==null) { throw new PrendaInvalidaException("No se puede crear prenda sin material");}
     this.material = material;
-  }
-  public boolean agregarColor(Color color){
-    boolean agregar = this.colores.size()<cantidadColores;
-    if(agregar){
-      this.colores.add(color);
-    }
-    return agregar;
+    if(colorPrimario==null) { throw new PrendaInvalidaException("No se puede crear prenda sin colorPrimario");}
+    this.colorPrimario = colorPrimario;
+    this.colorSecundario = colorSecundario;
   }
 
 }

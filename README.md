@@ -1,12 +1,17 @@
 DDS - Que me pongo iteración I
 
 ## Diagrama de Clases
-![Diagrama de Clases](http://www.plantuml.com/plantuml/png/XL9FQ-f043zdFiNWIHycyAuFNp1D8rYiaQYNNiesBY8asR2xmPRYT--O7LDZXLwoEpk_-VqPCZLMQDkK1UI5C0OZsyXgfpx1MnoCdQmqLIB4kZqDUBdGUw7Tyz2zZk04icfAV1PMweCeN9Sedf9eEKO4BzucMGedp-5YmkqL8JlWAiesoUjwkqgoUPgvaMZn4ZscvpktvylPTpkAusITKhacMlRUqMqEjN85Mhg2rtU69PSSCbQ5qY7cvqDIHl0Ub2fGxBMah6rts7unfwminXfEy2OHvfUQuEBDM2roo_PcT5NwuvxBNCjkjQsPSUTqzC-z4zybhAYiA5J5V2ZVBG7CRohu7ojvl78_x2_t71201tm_l4B2pHOdVbFxhDTDxDInegd1to3uCy1sQz1HECQRPK7FCVOb-xqW2F5-ewcfvTH-s0om3qOUPfESWtzycDAtAOil)
+![Diagrama de Clases](classDiagram/diagram.png)
 ## Consideraciones
-Las prendas no pueden tener atributos vacíos, el proceso de creación de una prenda se puede complicar debido a la cantidad de atributos, para mantener consistencia podemos emplear algún patrón creacional que abstraiga la creación de estos objetos y nos los entregue listos para usar.
 
-El uso del patrón debe permitir que la configuracion de la prenda tenga sentido, no debe existir una prenda "Remera" de tipo "Calzado"
+El conjunto de Materiales, Tipos y Categorias a modelar es finito y no se espera que varie demasiado en el tiempo,
+esto nos permite abstraer estas entidades como Enum.
 
-Decido utilizar el patrón *Factory Method*, que me permite separar la creación de una prenda del los objetos que usen a las prendas, teniendo una clase que extienda a *PrendaFactory* para obtener una prenda y mantener una coherencia con el tipo y categoría de prenda, ejemplo *PantaloFactory* tiene categoría *ParteSuperior* y tipo Pantalón.
+En el caso particular del TipoPrenda, al definirlas las asociamos a la su categoria correspondiente; el tipo y la 
+están fuertemente acoplados, el tipo no puede cambiar de categoria en tiempo de ejecucion y viceversa. Desde el punto
+de vista de la prenda, solo hace falta que conozca su tipo de prenda.
 
-¿Qué es una prenda válida para un atuendo? Aquella que se obtiene mediante un *factory*, o una prenda cuyo tipo no exista aún en el atuendo(no quisiera tener dos prendas inferiores en el atuendo?, pero si podría tener más de un accesorio?).
+Decido no definir una clase color y optar por la Clase color de java.awt.Color, esta permite instanciar colores mediante
+RGB o algunos colores predefinidos(BLACK, WHITE, BLUE...)
+
+Al momento de crear una prenda, se valida que los atributos esenciales no sean nulos, fallando en el caso de que asi sea.

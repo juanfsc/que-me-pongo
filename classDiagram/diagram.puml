@@ -1,0 +1,29 @@
+@startuml
+
+enum MaterialPrenda{
+	JEAN,
+	CUERO
+}
+enum CategoriaPrenda{
+	PARTE_SUPERIOR,
+	CALZADO,
+	PARTE_INFERIOR,
+	ACCESORIOS
+}
+class Prenda{
+	TipoPrenda tipo
+	MaterialPrenda material
+	Color colorPrimario;
+	Color colorSecundario;
+}
+enum TipoPrenda{
+	CategoriaPrenda categoria;
+	CategoriaPrenda getCategoria()
+}
+
+Prenda --> TipoPrenda
+MaterialPrenda <-up- Prenda
+Prenda -down-> "1..*" Color
+TipoPrenda --> CategoriaPrenda
+
+@enduml
