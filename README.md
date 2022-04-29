@@ -5,6 +5,11 @@ https://docs.google.com/document/d/10j6XB9zIhl5xox2xBEDEFsgPmueHMkyvLSHcLxl_27Y/
 ## Diagrama de Clases
 ![Diagrama de Clases](./classDiagram/diagramIteracionII.png)
 ## Consideraciones
+La prenda conoce su trama, es responsabilidad de quien crea la prenda que esta este relacionada correctamente.
+
+Los uniformes tienen una referencia a Prenda por cada prenda que deben tener, 
+
+Los uniformes se crean con un FactoryMethod para cada tipo de uniforme que se necesite en la Clase UniformeFactory
 
 #DDS - Que me pongo iteración I
 >**Requerimientos**:
