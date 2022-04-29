@@ -10,20 +10,64 @@ enum CategoriaPrenda{
 	PARTE_INFERIOR,
 	ACCESORIOS
 }
-class Prenda{
-	TipoPrenda tipo
-	MaterialPrenda material
-	Color colorPrimario;
-	Color colorSecundario;
-}
 enum TipoPrenda{
 	CategoriaPrenda categoria;
 	CategoriaPrenda getCategoria()
 }
+enum TramaPrenda{
+    LISA,
+    RAYADA,
+    CON_LUNARES,
+    A_CUADROS,
+    ESTAMPADO
+}
+class Prenda{
+	TipoPrenda tipo;
+	MaterialPrenda material;
+	TramaPrenda trama;
+	Color colorPrimario;
+	Color colorSecundario;
+}
+class BorradorPrenda{
+    TipoPrenda tipo;
+    MaterialPrenda material;
+    TramaPrenda trama;
+    Color colorPrimario;
+    Color colorSecundario;
+    setTipoPrenda(TipoPrenda);
+    setMaterialPrenda(MaterialPrenda);
+    setTramaPrenda(TramaPrenda);
+    setColorPrimario(Color);
+    setColorSecundario(Color);
+    Prenda crearPrenda();
+}
+class Sugerencia{
+    String titulo;
+    String descripcion;
+}
+
+class Uniforme{
+    Prenda prendaSuperior;
+    Prenda prendaInferior;
+    Prenda calzado;
+    List<Sugerencia> sugerencias;
+    void recibirSugerencia(Sugerencia);
+
+}
+
+class UniformeFactory{
+    Uniforme UniformeColegioSanJuan();
+    Uniforme UniformeInstitutoJohnson();
+}
+
 
 Prenda --> TipoPrenda
 MaterialPrenda <-up- Prenda
-Prenda -down-> "1..*" Color
+Prenda -down-> "2" Color
 TipoPrenda --> CategoriaPrenda
-
+Prenda -> TramaPrenda
+BorradorPrenda .> Prenda
+UniformeFactory .> Uniforme
+Uniforme --> "3" Prenda
+Uniforme -> "*" Sugerencia
 @enduml

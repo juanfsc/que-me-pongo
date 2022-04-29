@@ -5,15 +5,13 @@ import java.awt.Color;
 public class Prenda {
   private TipoPrenda tipo;
   private MaterialPrenda material;
+  private TramaPrenda trama;
   private Color colorPrimario;
   private Color colorSecundario;
-
-  public Prenda(TipoPrenda tipo, MaterialPrenda material, Color colorPrimario, Color colorSecundario){
-    if(tipo==null) { throw new PrendaInvalidaException("No se puede crear prenda sin tipo");}
+  public Prenda(TipoPrenda tipo, MaterialPrenda material, TramaPrenda trama, Color colorPrimario, Color colorSecundario){
     this.tipo = tipo;
-    if(material==null) { throw new PrendaInvalidaException("No se puede crear prenda sin material");}
     this.material = material;
-    if(colorPrimario==null) { throw new PrendaInvalidaException("No se puede crear prenda sin colorPrimario");}
+    this.trama = trama;
     this.colorPrimario = colorPrimario;
     this.colorSecundario = colorSecundario;
   }
