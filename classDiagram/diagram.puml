@@ -55,9 +55,15 @@ class Uniforme{
 
 }
 
-class UniformeFactory{
-    Uniforme UniformeColegioSanJuan();
-    Uniforme UniformeInstitutoJohnson();
+abstract UniformeFactory{
+    Uniforme crearUniforme();
+
+}
+class UniformeColegioSanJuanFactory {
+    Uniforme crearUniforme();
+}
+class UniformeInstitutoJohnsonFactory {
+    Uniforme crearUniforme();
 }
 
 
@@ -70,4 +76,6 @@ BorradorPrenda .> Prenda
 UniformeFactory .> Uniforme
 Uniforme --> "3" Prenda
 Uniforme -> "*" Sugerencia
+UniformeColegioSanJuanFactory --|> UniformeFactory
+UniformeInstitutoJohnsonFactory --|> UniformeFactory
 @enduml

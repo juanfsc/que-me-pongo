@@ -5,11 +5,16 @@ https://docs.google.com/document/d/10j6XB9zIhl5xox2xBEDEFsgPmueHMkyvLSHcLxl_27Y/
 ## Diagrama de Clases
 ![Diagrama de Clases](./classDiagram/diagramIteracionII.png)
 ## Consideraciones
-La prenda conoce su trama, es responsabilidad de quien crea la prenda que esta este relacionada correctamente.
+Las prendas siguen siendo **inmutables**, para poder tener un borrador de la prenda que se va creado de a poco, se utiliza
+`BorradorPrenda` que es un **_Builder_** con los mismos parámetros de la clase Prenda, esta por el requiriemento de ir
+creando de a poco no es inmutable, una vez que se configurar podemos crear la prenda completa, como no se va a crear una
+prenda sin el `BorradorPrenda`, podemos sacar las validaciones de los parámetros validos de `Prenda` y dejarlas en el
+_**Builder**_.
 
-Los uniformes tienen una referencia a Prenda por cada prenda que deben tener, 
+La `Prenda` conoce su `Trama`, es responsabilidad de quien crea la prenda(`BorrdorPrenda`) que esta este relacionada correctamente.
 
-Los uniformes se crean con un FactoryMethod para cada tipo de uniforme que se necesite en la Clase UniformeFactory
+Un `Uniforme` se crea con un _**FactoryMethod**_, para cada tipo de uniforme que se necesite se creará un clase que extienda
+a `UniformeFactory` y se encargue de configurar los parámetros correctos para las prendas del `Uniforme`.
 
 #DDS - Que me pongo iteración I
 >**Requerimientos**:
