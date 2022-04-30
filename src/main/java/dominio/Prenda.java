@@ -8,7 +8,9 @@ public class Prenda {
   private TramaPrenda trama;
   private Color colorPrimario;
   private Color colorSecundario;
-  public Prenda(TipoPrenda tipo, MaterialPrenda material, TramaPrenda trama, Color colorPrimario, Color colorSecundario){
+
+  public Prenda(TipoPrenda tipo, MaterialPrenda material, TramaPrenda trama,
+                Color colorPrimario, Color colorSecundario) {
     this.tipo = tipo;
     this.material = material;
     this.trama = trama;
@@ -16,4 +18,7 @@ public class Prenda {
     this.colorSecundario = colorSecundario;
   }
 
+  public TipoPrenda getTipo() {
+    return this.tipo;
+  }
 }

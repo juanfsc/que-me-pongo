@@ -42,7 +42,6 @@ class BorradorPrenda{
     Prenda crearPrenda();
 }
 class Sugerencia{
-    String titulo;
     String descripcion;
 }
 

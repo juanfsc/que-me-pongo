@@ -3,7 +3,7 @@ package dominio;
 import java.awt.Color;
 
 public class BorradorPrenda {
-  TipoPrenda tipoPrenda ;
+  TipoPrenda tipoPrenda;
   MaterialPrenda materialPrenda;
   TramaPrenda tramaPrenda = TramaPrenda.LISA;
   Color colorPrimario;
@@ -18,10 +18,9 @@ public class BorradorPrenda {
   }
 
   public void setTramaPrenda(TramaPrenda tramaPrenda) {
-    if(tramaPrenda==null){
-      return;
+    if (tramaPrenda != null) {
+      this.tramaPrenda = tramaPrenda;
     }
-    this.tramaPrenda = tramaPrenda;
   }
 
   public void setColorPrimario(Color colorPrimario) {
@@ -32,10 +31,24 @@ public class BorradorPrenda {
     this.colorSecundario = colorSecundario;
   }
 
-  public Prenda crearPrenda(){
-    if(this.tipoPrenda==null) { throw new PrendaInvalidaException("No se puede crear prenda sin tipo");}
-    if(this.materialPrenda==null) { throw new PrendaInvalidaException("No se puede crear prenda sin material");}
-    if(this.colorPrimario==null) { throw new PrendaInvalidaException("No se puede crear prenda sin colorPrimario");}
-    return new Prenda(this.tipoPrenda, this.materialPrenda, this.tramaPrenda, this.colorPrimario, this.colorSecundario);
+  private void validar() {
+    if (this.tipoPrenda == null) {
+      throw new PrendaInvalidaException("No se puede crear prenda sin tipo");
+    }
+    if (this.materialPrenda == null) {
+      throw new PrendaInvalidaException("No se puede crear prenda sin material");
+    }
+    if (this.colorPrimario == null) {
+      throw new PrendaInvalidaException("No se puede crear prenda sin colorPrimario");
+    }
+  }
+
+  public Prenda crearPrenda() {
+    this.validar();
+    return new Prenda(this.tipoPrenda,
+        this.materialPrenda,
+        this.tramaPrenda,
+        this.colorPrimario,
+        this.colorSecundario);
   }
 }

@@ -12,7 +12,7 @@ public enum TipoPrenda {
     this.categoria = categoria;
   }
 
-  public CategoriaPrenda getCategoria(){
+  public CategoriaPrenda getCategoria() {
     return this.categoria;
   }
 }
