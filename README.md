@@ -1,5 +1,5 @@
 
-#DDS - Que me pongo iteración II
+# DDS - Que me pongo iteración II
 >**Requerimientos**:
 https://docs.google.com/document/d/10j6XB9zIhl5xox2xBEDEFsgPmueHMkyvLSHcLxl_27Y/edit#
 ## Diagrama de Clases
@@ -16,7 +16,7 @@ La `Prenda` conoce su `Trama`, es responsabilidad de quien crea la prenda(`Borrd
 Un `Uniforme` se crea con un _**FactoryMethod**_, para cada tipo de uniforme que se necesite se creará un clase que extienda
 a `UniformeFactory` y se encargue de configurar los parámetros correctos para las prendas del `Uniforme`.
 
-#DDS - Que me pongo iteración I
+# DDS - Que me pongo iteración I
 >**Requerimientos**:
 https://docs.google.com/document/d/1k1f-9AuIohlBGB2soSNePJ6jLxM37_tZeSD-hW_esIQ/edit#
 ## Diagrama de Clases
